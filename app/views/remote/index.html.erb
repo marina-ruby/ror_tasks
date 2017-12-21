@@ -1,0 +1,14 @@
+<h1>Task 1</h1>
+<div class="side__left">
+  <h3>Left side</h3>
+  <%= render 'form' %>
+</div>
+<div class="side__right">
+  <h3>Right side</h3>
+  <p>
+    <strong>Texts:</strong>
+    <% @remotes.each do |remote| %>
+      <%= remote.body %>
+    <% end %>
+  </p>
+</div>
