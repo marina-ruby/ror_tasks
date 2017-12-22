@@ -6,9 +6,14 @@
 <div class="side__right">
   <h3>Right side</h3>
   <p>
-    <strong>Texts:</strong>
-    <% @remotes.each do |remote| %>
-      <%= remote.body %>
-    <% end %>
+    <%= @remotes.count %>
+    <%= @describe %>
+  <p>
+    <strong>Время:</strong>
+    <div class="side-time">
+      <% @remotes.each do |remote| %>
+        <p><%= remote.created_at %></p>
+      <% end %>
+    </div>
   </p>
 </div>

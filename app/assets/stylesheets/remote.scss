@@ -10,6 +10,10 @@
 
   &__right {
     float: right;
-    height: 500px;
   }
+}
+
+.side-time {
+  height: 200px;
+  overflow-y: scroll;
 }
