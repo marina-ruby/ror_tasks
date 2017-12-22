@@ -19,11 +19,11 @@ class RemoteController < ApplicationController
 
   def create
     @remote = Remote.new(article_params)
-    if @remote.save
-      redirect_to remote_index_path
-    else
-      render 'new'
-    end
+    # if @remote.save
+    #   redirect_to remote_index_path
+    # else
+    #   render 'new'
+    # end
   end
 
   def get_describe
