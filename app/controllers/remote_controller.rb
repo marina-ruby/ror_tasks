@@ -34,7 +34,7 @@ class RemoteController < ApplicationController
   def get_describe
     case @remotes.count.to_s
     when /^1$/ then @describe = 'запрос'
-    when /^1|[5-9]|0$/ then @describe = 'запросов'
+    when /^1|[5-9]$|0$/ then @describe = 'запросов'
     when /1$/ then @describe = 'запрос'
     when /[2-4]$/ then @describe = 'запроса'
     else
