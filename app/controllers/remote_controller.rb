@@ -2,7 +2,7 @@ class RemoteController < ApplicationController
 
   def index
     @remotes = Remote.all
-    get_describe
+    @describe = Russian.p(@remotes.count, 'запрос', 'запроса', 'запросов')
   end
 
   def show
@@ -21,24 +21,11 @@ class RemoteController < ApplicationController
     @remote = Remote.new(article_params)
     if @remote.save
       redirect_to remote_index_path
-      # render 'new'
     end
   end
-
 
   private
   def article_params
     params.require(:remote).permit(:body)
-  end
-
-  def get_describe
-    case @remotes.count.to_s
-    when /^1$/ then @describe = 'запрос'
-    when /^1|[5-9]$|0$/ then @describe = 'запросов'
-    when /1$/ then @describe = 'запрос'
-    when /[2-4]$/ then @describe = 'запроса'
-    else
-      @describe = 'Errors'
-    end
   end
 end
