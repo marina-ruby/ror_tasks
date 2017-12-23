@@ -6,7 +6,6 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @aritcles = Articles.all
   end
 
   def new
