@@ -2,7 +2,7 @@ class RemoteController < ApplicationController
 
   def index
     @remotes = Remote.all
-    get_describe()
+    get_describe
   end
 
   def show
@@ -19,11 +19,16 @@ class RemoteController < ApplicationController
 
   def create
     @remote = Remote.new(article_params)
-    # if @remote.save
-    #   redirect_to remote_index_path
-    # else
-    #   render 'new'
-    # end
+    if @remote.save
+      redirect_to remote_index_path
+      # render 'new'
+    end
+  end
+
+
+  private
+  def article_params
+    params.require(:remote).permit(:body)
   end
 
   def get_describe
@@ -35,10 +40,5 @@ class RemoteController < ApplicationController
     else
       @describe = 'Errors'
     end
-  end
-
-  private
-  def article_params
-    params.require(:remote).permit(:body)
   end
 end

@@ -1,9 +1,11 @@
-<%= form_for :remote do |form| %>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_field :body %>
-  </p>
-  <a id="btn-send">
-    <%= form.submit %>
-  </a>
+<%= form_with(scope: :remote) do |form| %>
+  <div id="new_remote">
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_field :body %>
+    </p>
+    <a id="btn-send">
+      <%= form.submit %>
+    </a>
+  </div>
 <% end %>
