@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <nav>
+      <strong><%= link_to "List of Authors", authors_path %></strong>
+      <strong><%= link_to "List of Articles", articles_path %></strong>
+    <hr>
+    </nav>
     <%= yield %>
   </body>
 </html>
