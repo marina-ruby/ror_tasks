@@ -6,6 +6,12 @@ class AuthorsController < ApplicationController
   end
 
   def show
+    @articles =
+      @author
+        .articles
+        .includes(:tags)
+        .order('created_at DESC')
+
   end
 
   private

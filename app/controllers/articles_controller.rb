@@ -2,10 +2,9 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:tag]
-      model = Article.joins(:tags).where(tags: { name: params[:tag] })
-    else
-      model = Article
+    model = Article.includes(:author)
+    unless params[:tag].nil?
+      model = model.joins(:tags).where(tags: { name: params[:tag] })
     end
     @articles = model.paginate(page: params[:page], per_page: 10)
                      .order('created_at DESC')
