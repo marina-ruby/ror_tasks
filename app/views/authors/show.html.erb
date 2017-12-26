@@ -28,9 +28,14 @@
 <div>
   <h3>List of articles:</h3>
   <p>
-
+    <% @articles.each do |article| %>
+      <p><i> <%= link_to article.title, article %></i>
+          <% article.tags.each do |tag| %>
+            <span><%= link_to tag.name, articles_path(tag: tag.name) %></span>
+          <% end %>
+        </p>
+      </p>
+    <% end %>
   </p>
 </div>
-
-<%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>
