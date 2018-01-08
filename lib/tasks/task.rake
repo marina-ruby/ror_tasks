@@ -14,8 +14,8 @@ task export_users_emails: :environment do
 end
 
 task report_to_html: :environment do
-
-  File.open("db/importers/report.html",'w') do |report|
+  filename = "report_#{Time.now.to_i}"
+  File.open("db/importers/reports/#{filename}.html",'w') do |report|
     count_authors = Author.count
     count_articles = Article.count
     count_comments = Comment.count
@@ -39,6 +39,6 @@ task report_to_html: :environment do
   end
 end
 
-task :remove_old_tasks do
+task remove_old_tasks: :environment do
 
 end
