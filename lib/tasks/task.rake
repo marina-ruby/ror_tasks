@@ -40,5 +40,8 @@ task report_to_html: :environment do
 end
 
 task remove_old_tasks: :environment do
-
+  Author.all.each do |author|
+    ids_articles = author.articles.order("created_at DESC").offset(5).ids.sort
+    Article.delete(ids_articles)
+  end
 end
