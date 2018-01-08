@@ -19,7 +19,8 @@ task report_to_html: :environment do
     count_authors = Author.count
     count_articles = Article.count
     count_comments = Comment.count
-    most_comments_id = Comment.group(:article_id).count.max_by { |k, v| v }.try { |k, v| k }
+    most_comments_id = Comment.group(:article_id)
+                              .count.max_by { |k, v| v }.try { |k, v| k }
     article = Article.find(most_comments_id)
     values = Comment.group(:article_id).count.values
     average_comments = values.reduce(:+) / values.size
@@ -42,6 +43,8 @@ end
 task remove_old_tasks: :environment do
   Author.all.each do |author|
     ids_articles = author.articles.order("created_at DESC").offset(5).ids.sort
-    Article.delete(ids_articles)
+    ids_articles.each do |id_art|
+      author.articles.delete(id_art)
+    end
   end
 end
