@@ -1,0 +1,17 @@
+<h1>Edit user's name</h1>
+
+<%= form_with(model: [ @user ], local: true) do |form| %>
+  <p>
+    <b><%= form.label :name %><br></b>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <b><%= form.label :email %><br></b>
+    <%= @user.email %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', articles_path %>

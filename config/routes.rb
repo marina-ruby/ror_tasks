@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments
   resources :tags
-  resources :articles
   resources :authors
-
+  resources :articles do
+    resources :comments
+  end
+  resources :users, except: [:new, :create, :index, :destroy]
   root 'articles#index'
 end
