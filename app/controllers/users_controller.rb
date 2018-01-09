@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  http_basic_authenticate_with email: "orange",
-                               password: "secret"
+
   def edit
     @user = User.find(params[:id])
   end

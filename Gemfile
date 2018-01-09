@@ -53,6 +53,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'awesome_print'
   gem 'will_paginate'
+  gem 'bcrypt', '~> 3.1.7'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

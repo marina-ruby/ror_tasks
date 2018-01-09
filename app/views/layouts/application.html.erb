@@ -10,7 +10,13 @@
 
   <body>
     <div>
-      <%= link_to "Edit user's name", edit_user_path(3) %>
+      <% if logged_in? %>
+        <%= current_user.name %>
+        <%= link_to 'New article', new_article_path %>
+        <%= link_to "Edit user's name", edit_user_path(current_user.id) %>
+      <% else %>
+        <%= link_to 'Log in', login_path %>
+      <% end %>
     </div>
     <nav>
       <strong><%= link_to "List of Authors", authors_path %></strong>
