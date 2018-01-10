@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :tags
   resources :articles
   resources :authors
+  resources :list_reports
 end
