@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @commentor_name = current_user.try(:name) || "Anonimous"
   end
 
   def new
@@ -22,11 +23,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    if @article.save
-      redirect_to @article
-    else
-      render 'new'
-    end
+    redirect_to articles_path
   end
 
   private
