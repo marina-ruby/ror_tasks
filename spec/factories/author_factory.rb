@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :author, class: Author do
     name { Faker::Name.name }
-    email { Faker::Internet.email }
+    password { Faker::Internet.password }
+    email { Faker::Internet.email(name) }
     city { Faker::Address.city }
     address { Faker::Address.street_address }
     date_of_birth { Faker::Date.birthday(18, 85) }

@@ -13,7 +13,7 @@
       <% if logged_in? %>
         <%= current_user.name %>
         <%= link_to 'New article', new_article_path %>
-        <%= link_to "Edit user's name", edit_user_path(current_user.id) %>
+        <%= link_to "Edit user's name", edit_author_path(current_user.id) %>
       <% else %>
         <%= link_to 'Log in', login_path %>
       <% end %>
