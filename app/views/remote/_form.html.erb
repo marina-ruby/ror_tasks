@@ -1,8 +1,8 @@
-<%= form_with(scope: :remote) do |form| %>
+<%= form_with scope: @remote, url: remote_index_path do |form| %>
   <div id="new_remote">
     <p>
       <%= form.label :body %><br>
-      <%= form.text_field :body %>
+      <%= form.text_field :body, class: 'input' %>
     </p>
     <a id="btn-send">
       <%= form.submit %>

@@ -2,6 +2,7 @@ class RemoteController < ApplicationController
 
   def index
     @remotes = Remote.all
+    @count = @remotes.count
     @describe = Russian.p(@remotes.count, 'запрос', 'запроса', 'запросов')
   end
 
@@ -18,10 +19,11 @@ class RemoteController < ApplicationController
   end
 
   def create
-    @remote = Remote.new(article_params)
-    if @remote.save
-      redirect_to remote_index_path
-    end
+    @remote = Remote.create(article_params)
+    render json: {
+      body: @remote.body,
+      date: @remote.created_at.strftime('%F %T %z')
+    }
   end
 
   private
