@@ -1,0 +1,21 @@
+<h1>Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Report</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report %></td>
+        <td><%= link_to 'LINK', list_report_path(report) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
