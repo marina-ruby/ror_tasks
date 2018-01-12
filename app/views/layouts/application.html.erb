@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <div>
+      <% if logged_in? %>
+        <%= current_user.name %>
+        <%= link_to 'New article', new_article_path %>
+        <%= link_to "Edit user's name", edit_author_path(current_user.id) %>
+      <% else %>
+        <%= link_to 'Log in', login_path %>
+      <% end %>
+    </div>
     <nav>
       <strong><%= link_to "List of Authors", authors_path %></strong>
       <strong><%= link_to "List of Articles", articles_path %></strong>
