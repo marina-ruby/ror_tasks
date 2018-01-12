@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = Author.find_by(email: params[:session][:email].downcase,
-                      password: params[:session][:password])
+                          password: params[:session][:password])
     if user
       log_in(user)
       redirect_to articles_path

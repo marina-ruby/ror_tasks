@@ -2,16 +2,15 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   def index
-    @authors = Author.paginate(:page => params[:page], :per_page => 10)
+    @authors = Author.paginate(page: params[:page], per_page: 10)
   end
 
   def show
     @articles =
       @author
-        .articles
-        .includes(:tags)
-        .order('created_at DESC')
-
+      .articles
+      .includes(:tags)
+      .order('created_at DESC')
   end
 
   def edit
@@ -30,13 +29,13 @@ class AuthorsController < ApplicationController
 
   private
 
-
   private
-    def set_author
-      @author = Author.find(params[:id])
-    end
 
-    def author_params
-      params.require(:author).permit(:name)
-    end
+  def set_author
+    @author = Author.find(params[:id])
+  end
+
+  def author_params
+    params.require(:author).permit(:name)
+  end
 end

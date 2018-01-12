@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @commentor_name = current_user.try(:name) || "Anonimous"
+    @commentor_name = current_user.try(:name) || 'Anonimous'
   end
 
   def new
