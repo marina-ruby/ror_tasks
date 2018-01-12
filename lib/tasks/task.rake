@@ -34,13 +34,12 @@ class ReportExporter
   end
 end
 
-
 task :update_data do
   Rake::Task['db:reset'].invoke
 end
 
 task export_users_emails: :environment do
-  CSV.open("db/importers/file.csv", "wb") do |csv|
+  CSV.open("db/importers/users_info.csv", "wb") do |csv|
     csv << Author.attribute_names
     Author.find_each do |author|
       csv << author.attributes.values
