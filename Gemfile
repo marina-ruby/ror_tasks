@@ -41,14 +41,14 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'faker'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.7'
   gem 'pry'
   gem 'rubocop'
   gem 'guard-rubocop'
   gem 'guard-rspec'
-  gem 'simplecov'
   gem 'database_cleaner'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov'
 end
 
 group :development do

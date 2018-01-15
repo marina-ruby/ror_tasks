@@ -280,11 +280,11 @@ DEPENDENCIES
   pry
   puma (~> 3.7)
   rails (~> 5.1.4)
-  rspec-rails
+  rspec-rails (~> 3.7)
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
-  shoulda-matchers
+  shoulda-matchers (~> 3.1)
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
