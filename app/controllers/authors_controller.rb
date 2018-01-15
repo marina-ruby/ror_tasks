@@ -29,8 +29,6 @@ class AuthorsController < ApplicationController
 
   private
 
-  private
-
   def set_author
     @author = Author.find(params[:id])
   end
