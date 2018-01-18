@@ -2,25 +2,49 @@ require "rails_helper"
 require 'spec_helper'
 
 describe AuthorsController do
+
   render_views
-  describe "GET index" do
+
+  describe "index action" do
     it 'render a list of authors' do
-      author1, author2 = create(:author), create(:author)
+      authors = create_list(:author, 5)
       get :index
-      expect(assigns(:authors)).to match_array([author1, author2])
+      expect(assigns(:authors)).to match_array(authors)
     end
   end
 
   describe 'show action' do
-    it 'should list of articles' do
+    it 'show list of articles' do
       author = create(:author)
       get :show, params: { id: author.id }
       expect(response).to render_template :show
     end
 
-    # it 'renders 404 page' do
-    #   get :show, params: { id: 0 }
-    #   response.status.should == 404
-    # end
+    it 'does not show list of articles' do
+      expect { get :show,
+          params: { id: -1 } }.to raise_exception ActiveRecord::RecordNotFound
+    end
+  end
+
+  describe 'update action' do
+    let(:author) { create(:author) }
+
+    context 'when valid' do
+      render_views
+      let(:new_values) { attributes_for(:author) }
+
+      it "render article page" do
+        put :update,
+          params: { id: author.id, name: author.name, author: new_values }
+        expect(response).to redirect_to(articles_path)
+      end
+    end
+
+   it 'should render edit' do
+      put :update, params: { id: author.id, author: { id: author.id } }
+      expect(response).to redirect_to(edit_author_path(author.id))
+      # expect(response).to have_http_status(422)
+    end
+
   end
 end

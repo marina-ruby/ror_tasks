@@ -15,7 +15,7 @@ FactoryBot.define do
 
     factory :author_with_articles do
       after(:create) do |author|
-        create_list(:article_with_comment, 10, author: author)
+        create_list(:article_with_comments, 10, author: author)
       end
     end
   end

@@ -22,8 +22,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.articles.create(article_params)
-    redirect_to articles_path
+    if current_user
+      @article = current_user.articles.create(article_params)
+      redirect_to articles_path
+    else
+      redirect_to login
+    end
   end
 
   private

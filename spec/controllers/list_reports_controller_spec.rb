@@ -9,11 +9,18 @@ describe ListReportsController do
   end
 
   describe 'show action' do
-    subject { assigns('file') }
-    it 'should show report' do
-      get :show, params: { id: "report_name" }
-      # expect(response).to render_template :show
+    context 'show file' do
+      it 'exist file' do
+        file = Rails.root + "db/importers/reports/report_test"
+        f = File.open("#{file}.html", 'w')
+        get :show, params: { id: file }
+      end
+
+      it 'does not exist file' do
+        expect(File).not_to exist("file")
+      end
     end
   end
+
   DatabaseCleaner.clean
 end
