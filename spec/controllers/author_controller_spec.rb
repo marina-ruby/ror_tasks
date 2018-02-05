@@ -28,10 +28,10 @@ describe AuthorsController do
 
   describe 'update action' do
     let(:author) { create(:author) }
+    let(:new_values) { attributes_for(:author) }
 
     context 'when valid' do
       render_views
-      let(:new_values) { attributes_for(:author) }
 
       it "render article page" do
         put :update,
@@ -40,11 +40,19 @@ describe AuthorsController do
       end
     end
 
-   it 'should render edit' do
-      put :update, params: { id: author.id, author: { id: author.id } }
-      expect(response).to redirect_to(edit_author_path(author.id))
-      # expect(response).to have_http_status(422)
+    context 'when invalid' do
+      it "render edit page" do
+        put :update,
+          params: { id: author.id, author: { name: "-0"} }
+        expect(response).to render_template :edit
+      end
     end
 
+    context 'edit action' do
+      it 'renders users form' do
+        get :edit, params: { id: author.id }
+        expect(response).not_to redirect_to(edit_author_path(author.id))
+      end
+    end
   end
 end
