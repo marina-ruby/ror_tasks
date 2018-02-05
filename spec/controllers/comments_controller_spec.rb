@@ -9,9 +9,10 @@ describe CommentsController do
   let(:comment) { author.articles.comments.first }
 
   describe "index action" do
-    # it 'render list of comments' do
-    #   get :index
-    # end
+    it 'render a list of comments' do
+      get :index
+      # expect(assigns(:comments)).to match_array(@comments)
+    end
   end
 
   describe 'create action' do
